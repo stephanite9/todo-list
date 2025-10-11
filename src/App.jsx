@@ -5,21 +5,36 @@ import './App.css'
 
 function App() {
   const [todos, setTodos] = useState([
-    "Task 1", 
-    "Task 2",
-    "Task 3",
+    {
+    
+      text: "Try to learn React",
+      isCompleted: false,
+    },{
+      text:"Cry and eat snacks",
+      isCompleted: false,
+    },{
+      text:"Git gud",
+      isCompleted: false,
+    
+    }
   ]);
 
   const addTodo = (text) => {
-    const newTodos = [...todos, text];
+    const newTodos = [...todos, {text}];
     setTodos(newTodos);
     };
+
+  const completeTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = true;
+    setTodos(newTodos);
+  };
 
   return (
     <div className='app'>
       <h1 className='todo-list'>My Todo List</h1>
       {todos.map((todo, index) => (
-        <TodoItem text={todo} key={index}/>
+        <TodoItem todo={todo} key={index} index={index} completeTodo={completeTodo}/>
       ))}
       <TodoForm addTodo={addTodo}/>
     </div>
