@@ -6,6 +6,7 @@ function TodoItem(props) {
             {props.todo.text}
             <div>
                 <button onClick={() => props.completeTodo(props.index)} >Complete</button>
+                <button onClick={() => props.removeTodo(props.index)} >Remove</button>
                 </div>
             </div>
     );
